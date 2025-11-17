@@ -24,11 +24,19 @@ body {
 .header {
   height: var(--tamanho-header);
   border-bottom: 2px solid #32b9cd;
+  background-color: white;
 }
+
 
 .header .container {
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+}
+
+.header .container img {
+  /* justify-content:flex-start; */
+  align-items: start;
   height: 100%;
 }
 
@@ -53,7 +61,7 @@ body {
 .titulo {
   color: #32b9cd;
   width: fit-content;
-  font-weight: 500;
+  font-weight: bolder;
 }
 
 .header h1 {
@@ -65,7 +73,7 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url('../assets/imgs/background1.png.jpg');
   background-size: cover;
 }
 
