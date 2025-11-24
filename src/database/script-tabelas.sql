@@ -6,57 +6,65 @@
 comandos para mysql server
 */
 
-CREATE DATABASE aquatech;
+CREATE DATABASE santos;
 
-USE aquatech;
+USE santos;
 
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
+CREATE TABLE jogador(
+idJogador INT PRIMARY KEY AUTO_INCREMENT,	
+nomeJogador VARCHAR(50),
+sobrenomeJogador VARCHAR(150),
+apelidoJogador VARCHAR(50),
+dtNascJogador DATE
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+CREATE TABLE usuario(
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+nomeUsuario VARCHAR(50),
+sobrenomeUsuario VARCHAR(150),
+apelidoUsuario VARCHAR(50),
+emailUsuario VARCHAR(150),
+senhaUsuario VARCHAR(255),
+fkJogadorFavorito INT,
+		CONSTRAINT fkUsuarioJogador
+        FOREIGN KEY (fkJogadorFavorito)
+        REFERENCES jogador(idJogador)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+CREATE TABLE forum(
+idComentario INT,
+fkUsuario INT,
+fkPost INT,
+descComentario VARCHAR(255),
+	 PRIMARY KEY (idComentario,fkUsuario,fkPost),
+	 CONSTRAINT fkForumUsuario
+     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+	 CONSTRAINT fkForumPost
+	 FOREIGN KEY (fkPost) REFERENCES forum(idComentario)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+CREATE TABLE pergunta(
+idPergunta INT PRIMARY KEY,
+descPergunta VARCHAR(200)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+CREATE TABLE resposta(
+idResposta INT,
+descResposta VARCHAR(100),
+valorResposta VARCHAR(10),
+fkPergunta INT,
+	CONSTRAINT fkPerguntaResposta
+    FOREIGN KEY (fkPergunta) REFERENCES pergunta(idPergunta),
+	CONSTRAINT chkValorResposta
+    CHECK (valorResposta IN('certo','errado'))
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+ALTER TABLE pergunta ADD COLUMN fkQuiz INT;
+ALTER TABLE pergunta ADD CONSTRAINT fkPerguntaQuiz FOREIGN KEY (fkQUiz) REFERENCES quiz(idQuiz);
+
+CREATE TABLE quiz(
+idQuiz INT PRIMARY KEY
+);
+
+show tables;
+drop table forum;

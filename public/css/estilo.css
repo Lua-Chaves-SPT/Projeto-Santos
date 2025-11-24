@@ -23,7 +23,7 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
+  border-bottom: 2px solid;
   background-color: white ;
 }
 
@@ -42,7 +42,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: black;
 }
 
 .agora {
@@ -55,11 +55,11 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: black;
 }
 
 .titulo {
-  color: #32b9cd;
+  color: black;
   width: fit-content;
   font-weight: bolder;
 }
@@ -75,24 +75,31 @@ body {
   color: white;
   background-image: url('../assets/imgs/background1.png.jpg');
   background-size: cover;
+  
 }
 
 .banner .container {
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   height: 100%;
+  text-align: left;
+  display: flex;
+  width: 100% ;
 }
 
 .banner .container p {
   width: 50%;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   font-size: 36px;
 }
 
 .banner .container span {
+  padding-left: 50px;
   font-weight: 800;
-  color: #e3b062;
+  color: goldenrod;
+  flex-direction: column;
+
 }
 
 /* MISSÃO VISÃO VALORES */
@@ -130,7 +137,7 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: black;
   height: 150px;
   color: #fff;
   display: flex;
