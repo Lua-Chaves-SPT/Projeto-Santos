@@ -10,10 +10,9 @@
 
     <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./assets/imgs/santos-2023-homenagem-ao-pele-seeklogo.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
 
 <body>
 
@@ -21,7 +20,8 @@
 
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <img src="./assets/imgs/santos-2023-homenagem-ao-pele-seeklogo.png">
+            <h1 class="titulo">SANTOS</h1>
             <ul class="navbar">
                 <li>
                     <a href="index.html">Inicial</a>
@@ -49,7 +49,7 @@
         </div>
         <div class="container">
             <div class="card card-login">
-                <h2>Olá de volta!</h2>
+                <h2>Faça o login</h2>
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="./assets/bola-girando.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -72,10 +72,10 @@
     </div>
 
     <!--footer inicio-->
-    <div class="footer">
+<div class="footer">
         <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-            <span class="version">v1.0.0</span>
+            <h4>Feito com amor por santista sofredor &hearts; SPTech &copy; 2025</h4>
+            <span class="version">prantos</span>
         </div>
     </div>
     <!--footer fim-->
@@ -127,10 +127,10 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id 
+                    sessionStorage.ID_USUARIO = json.id
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./time/inicio.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

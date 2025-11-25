@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/santos3.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>Santos FC | Página Inicial</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -22,38 +22,33 @@
 
 <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
 
-    <div class="janela">
-
-        <div class="header-left dash-header">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Aquários</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+      <div class="header">
+        <div class="container">
+            <img src="../assets/imgs/santos-2023-homenagem-ao-pele-seeklogo.png">
+            <h1 class="titulo">SANTOS</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">História</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="simulador.html">Jogadores</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="#">Elenco</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="cadastro.html">Curiosidades</a>
+                </li>
+            </ul>
         </div>
-
+    </div>
+        
+        <!-- <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div> -->
         <div class="dash">
             <div id="alerta">
             </div>
@@ -96,24 +91,6 @@
 </body>
 
 <script>
-
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
-    }
 
 </script>
 
