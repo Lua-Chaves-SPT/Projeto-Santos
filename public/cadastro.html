@@ -74,6 +74,15 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
+          <div class="campo">
+            <span>Escolha o seu jogador favorito:</span>
+            <select id="jogadorFavorito_select">
+              <option selected disabled value="#"> Selecione um jogador </option>
+              <option value="1">Neymar</opttion>
+              <option value="2">Pelé</opttion>
+              <option value="3">Zito</opttion>
+            </select>
+          </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -108,13 +117,15 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var jogadorFavoritoVar = Number(jogadorFavorito_select.value);
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == ""
+      confirmacaoSenhaVar == ""||
+      jogadorFavoritoVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -136,7 +147,9 @@
 
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar
+        senhaServer: senhaVar,
+        jogadorFavoritoServer: jogadorFavoritoVar,
+
         }),
     })
       .then(function (resposta) {

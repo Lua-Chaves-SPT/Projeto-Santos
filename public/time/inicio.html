@@ -10,7 +10,7 @@
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="./../css/style.css" />
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
@@ -20,17 +20,13 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body >
 
       <div class="header">
         <div class="container">
             <img src="../assets/imgs/santos-2023-homenagem-ao-pele-seeklogo.png">
             <h1 class="titulo">SANTOS</h1>
-            <ul class="barra-paginas">
-                <li>
-                    <a href="historia.html">História</a>
-                </li>
-                <li>|</li>
+            <ul class="navbar">
                 <li>
                     <a href="jogadores.html">Jogadores</a>
                 </li>
@@ -42,45 +38,32 @@
                 <li>
                     <a href="curiosidades.html">Curiosidades</a>
                 </li>
+                <li>|</li>
+                <li>
+                    <a href="quiz.html">Quiz</a>
+                </li>
             </ul>
+            <!-- <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div> -->
         </div>
     </div>
-        
-        <!-- <div class="btn-logout" onclick="limparSessao()">
-            <h3>Sair</h3>
-        </div> -->
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="cards" id="cardAquarios">
+                <div class="texto">
+
+                    <h1>História</h1>
+                    <img src="../assets/imgs/pele1.png">
+
+                    <p>O Santos Futebol Clube foi fundado por iniciativa de três esportistas da cidade, Francisco Raymundo Marques, Mário Ferraz de Campos e Argemiro de Souza Júnior.
+                        Eles convidaram a todos os interessados para participar da reunião inaugural do novo clube, que foi constituído para ser destinado a prática do futebol, que no começo do século passado estava engatinhando no Brasil.</p> 
+                    
+                    <p> A reunião histórica aconteceu na tarde do domingo, 14 de abril de 1912,
+                        na sede do Clube Concórdia, na antiga rua do Rosário, 18 (hoje rua João Pessoa, 8/10). São considerados como sócios-fundadores todos os 39 participantes dessa reunião.</p>
+
+                    <p>No dia da fundação, o nome da entidade foi sugerido por Edmundo Jorge de Araújo: Santos Foot-Ball Club e as cores dos uniformes da nova agremiação,
+                        que seria presidida no primeiro ano de existência por Sizino Patusca, eram o azul e o branco, com fios dourados entre elas.</p>  
+                        
+                </div>
 
             </div>
 
