@@ -1,0 +1,8 @@
+.container .barra-paginas {
+  color: black;
+  width: fit-content;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
