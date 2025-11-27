@@ -122,12 +122,12 @@
             if (resposta.ok) {
                 console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id
+                resposta.json().then(credenciais => {
+                    console.log(credenciais);
+                    console.log(JSON.stringify(credenciais));
+                    sessionStorage.EMAIL_USUARIO = credenciais.emailUsuario;
+                    sessionStorage.NOME_USUARIO = credenciais.nomeUsuario;
+                    sessionStorage.ID_USUARIO = credenciais.idUsuario;
 
                     setTimeout(function () {
                         window.location = "./time/inicio.html";
