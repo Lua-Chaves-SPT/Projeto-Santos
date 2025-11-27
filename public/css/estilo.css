@@ -121,7 +121,9 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 30px 0;
+  padding-left: 100px;
+  padding-right: 100px;
+
 }
 
 .social p {
@@ -154,18 +156,6 @@ body {
 }
 
 /* LOGIN */
-
-.login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
-
-.login .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
 .card {
   width: 50%;
@@ -262,14 +252,17 @@ body {
 
 .card_erro {
   display: none;
-  background-color: #fff;
-  color: black;
+  background-image: url('../assets/imgs/background1.png.jpg');
+  background-size: cover;
+  color: rgb(241, 175, 8);
   width: 230px;
   position: fixed;
-  border-radius: 4px;
-  border: #ED145B 3px solid;
+  border-radius: 3px;
+  border: goldenrod 3px solid;
   padding: 10px;
   margin-right: 10%;
+  
+  
 }
 
 .card_erro #mensagem_erro{

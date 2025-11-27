@@ -16,30 +16,55 @@ body {
 }
 
 .login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/campo-santos.png');
-  background-size: cover;
+position: relative;
+    /* Garante que o fundo cubra a tela, ajuste conforme seu layout */
+    min-height: 100vh; 
+    overflow: hidden; 
+}
+
+.login::before{
+content: "";
+    position: absolute;
+    top: 10%; left: 0;
+    width: 100%; height: 95%;
+    
+    /* 3. Coloque a imagem AQUI */
+    background-image: url('../assets/imgs/campo-santos.png'); /* SEU CAMINHO AQUI */
+    background-size: cover;
+    background-position: center;
+    
+    /* 4. Aplique o filtro de blur AQUI */
+    filter: blur(8px); /* Ajuste o valor: 5px (pouco), 10px (médio), 20px (muito) */
+    
+    /* 5. Um truque para evitar bordas brancas estranhas causadas pelo blur */
+    transform: scale(1.1); 
+    
+    /* 6. Envia essa camada para trás de tudo */
+    z-index: -1;
 }
 
 .login .container{
     justify-content: right;
-}
-.container {
-  display: flex;
-  width: 80%;
-  margin: auto;
-}
-
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid;
-  background-color: white ;
-}
-
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    /* backdrop-filter: blur(10px);  desfocar imagem do fundo*/
+    
+  }
+  
+  .header {
+    height: var(--tamanho-header);
+    border-bottom: 2px solid;
+    background-color: white ;
+  }
+  
+  .header .container {
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
 .header .container img {
@@ -49,7 +74,7 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background-color: rgba(245, 245, 245, 0.50);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -75,7 +100,7 @@ body {
 }
 
 .formulario span {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
 }
 
@@ -89,7 +114,7 @@ body {
 .formulario select {
   border: 2px solid goldenrod;
   background-color: white;
-  color: gray;
+  color: black;
   height: 36px;
   text-align: center;
   border-radius: 10px;
@@ -101,6 +126,7 @@ body {
   flex-direction: column;
   justify-content: start;
   padding: 5px 0;
+
 }
 
 
