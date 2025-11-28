@@ -17,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body onload=" atualizarJogador()">
+<body onload=" atualizarJogador() , renderizarGrafico(),carregarHistoricoQuiz()">
 
     <div class="header">
         <div class="container">
@@ -62,13 +62,16 @@
                 </div>
             </div>
 
-            <h2>📈 Evolução de Pontuação no Quiz</h2>
-<div class="grafico-container">
-    <canvas id="canvasHistoricoQuiz"></canvas>
-</div>
+            <div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+                <h2>📈 Evolução de Pontuação no Quiz</h2>
+                <div class="grafico-container">
+                    <canvas id="canvasHistoricoQuiz"></canvas>
+                </div>
+                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                
+            </div>
         </div>
     </div>
 
@@ -99,4 +102,76 @@
         }
 
 
+
+const idUsuario = sessionStorage.ID_USUARIO;
+let meuGrafico;
+function carregarHistoricoQuiz() {
+    if (!idUsuario) {
+        
+        return;
+    }
+
+    fetch(`quiz/resultados/${idUsuario}`, { method: "GET" })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.warn("Nenhuma tentativa registrada para este usuário.");
+                    return;
+                }
+                
+                resposta.json().then(function (json) {
+                    
+                    let labelsTentativas = [];
+                    let dadosPontuacoes = [];
+
+                    for (let i = json.length - 1; i >= 0; i--) { 
+                        let resultado = json[i];
+                        
+                        labelsTentativas.push(`Tentativa ${resultado.idTentativa}`);
+                        
+                        dadosPontuacoes.push(resultado.resultadoFinal);
+                    }
+
+                    renderizarGrafico(labelsTentativas, dadosPontuacoes);
+                });
+            } else {
+                console.error("Erro ao buscar histórico de quiz.");
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro de rede:", erro);
+        });
+}
+
+function renderizarGrafico(labels, dados) {
+
+    const ctx = document.getElementById('canvasHistoricoQuiz').getContext('2d');
+    
+    meuGrafico = new Chart(ctx, {
+        type: 'line', 
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Pontuação Final do Quiz',
+                data: dados,backgroundColor: 'rgba(0, 123, 255, 0.2)', 
+                borderColor: 'rgba(0, 123, 255, 1)',
+                borderWidth: 2,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100, 
+                    title: {
+                        display: true,
+                        text: 'Pontuação (Nota)'
+                    }
+                }
+            }
+        }
+    });
+}
     </script>
