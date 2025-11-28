@@ -14,6 +14,10 @@ body {
   align-items: center;
 }
 
+.container a{
+  margin: 5px 10px;
+}
+
 .texto{
   display: flex;
   flex-direction: column;
