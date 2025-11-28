@@ -18,14 +18,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 }
 
 .texto img{
   display: flex;
   width: 50%;
-
+  
 }
 
 .texto p{
@@ -33,4 +31,11 @@ body {
   margin-right: 10%;
   display: flex;
   align-content: center;
+  font-size: 18px;
+
+}
+
+.texto li{
+  font-size: 20px;
+
 }
