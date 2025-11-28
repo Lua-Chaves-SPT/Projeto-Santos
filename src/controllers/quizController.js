@@ -14,7 +14,7 @@ function quizSantos(req, res) {
         res.status(400).send("Seu Id Usuario está undefined!");
     } else if (porcentagemFinalDeAcertos == undefined){
         res.status(400).send("Sua porcentagem Final De Acertos está undefined!")
-    }
+    }   
     {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js

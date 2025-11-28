@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santos FC | Página Inicial</title>
+    <title>Santos FC | Elenco</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -20,16 +20,16 @@
         rel="stylesheet">
 </head>
 
-<body >
+<body>
 
-      <div class="header">
+    <div class="header">
         <div class="container">
             <img src="../assets/imgs/santos-2023-homenagem-ao-pele-seeklogo.png">
             <h1 class="titulo">SANTOS</h1>
             <ul class="navbar">
-                <a href="historia.html">História</a>
-            </li>
-            <li>|</li>
+                <a href="inicio.html">História</a>
+                </li>
+                <li>|</li>
                 <li>
                     <a href="jogadores.html">Jogadores</a>
                 </li>
@@ -42,9 +42,75 @@
                 <li>
                     <a href="quiz.html">Quiz</a>
                 </li>
+                <li>|</li>
+                <li>
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
             </ul>
             <!-- <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div> -->
         </div>
+
+        <div>
+
+            <h2>📋 Listagem Completa</h2>
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Apelido</th>
+                            <th>Posição</th>
+                            <th>Camisa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaDeJogadores">
+                        <tr>
+                            <td colspan="4">Carregando dados...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
+
+    <script>
+
+        function listarJogadores() {
+            fetch("/jogadores/listar", { method: "GET" })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(function (json) {
+
+                            var tbody = document.getElementById("listaDeJogadores");
+                            tbody.innerHTML = "";
+                            for (let i = 0; i < json.length; i++) {
+                                var jogador = json[i];
+
+
+                                var tr = document.createElement("tr");
+
+
+                                tr.innerHTML = `
+                            <td>${jogador.nomeJogador}</td>
+                            <td>${jogador.apelidoJogador}</td>
+                            <td>${jogador.posicao}</td>
+                            <td>${jogador.numCamisa}</td>
+                        `;
+
+                                tbody.appendChild(tr);
+                            }
+                        });
+                    } else {
+                        tbody.innerHTML = "<tr><td colspan='4'>Erro ao carregar dados.</td></tr>";
+                        console.error("Erro na API de listagem!");
+                    }
+                })
+                .catch(function (erro) {
+                    console.error("Erro de rede: " + erro);
+                });
+        }
+
+    </script>

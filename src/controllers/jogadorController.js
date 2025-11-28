@@ -1,0 +1,36 @@
+var jogadorModel = require("../models/jogadorModel");
+
+function listar(req, res) {
+    jogadorModel.listar() 
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
+function buscarMaisVotado(req, res) {
+    jogadorModel.buscarMaisVotado()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+module.exports = {
+    listar,
+    buscarMaisVotado // <--- Adicione aqui
+}
