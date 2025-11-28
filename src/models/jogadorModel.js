@@ -15,8 +15,6 @@ function listar() {
     `;
     
     console.log("Executando a instrução SQL: \n" + instrucao);
-
-
     return database.executar(instrucao);
 }
 

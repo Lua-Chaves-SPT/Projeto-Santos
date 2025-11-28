@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="listarJogadores()">
 
     <div class="header">
         <div class="container">
@@ -89,9 +89,7 @@
                             for (let i = 0; i < json.length; i++) {
                                 var jogador = json[i];
 
-
                                 var tr = document.createElement("tr");
-
 
                                 tr.innerHTML = `
                             <td>${jogador.nomeJogador}</td>

@@ -17,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="listarJogadores(), atualizarKpi()">
+<body onload=" atualizarJogador()">
 
     <div class="header">
         <div class="container">
@@ -50,7 +50,7 @@
         </div>
 
         <div>
-            <h1>🏆 Análise de Jogadores</h1>
+            <h1>🏆 Jogador Mais Votado🏆</h1>
 
             <div class="kpi-container">
                 <div class="kpi-card">
@@ -62,31 +62,19 @@
                 </div>
             </div>
 
-            <h2>📋 Listagem Completa</h2>
-            <div class="tabela-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Apelido</th>
-                            <th>Posição</th>
-                            <th>Camisa</th>
-                        </tr>
-                    </thead>
-                    <tbody id="listaDeJogadores">
-                        <tr>
-                            <td colspan="4">Carregando dados...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h2>📈 Evolução de Pontuação no Quiz</h2>
+<div class="grafico-container">
+    <canvas id="canvasHistoricoQuiz"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         </div>
     </div>
 
     <script>
 
-        function atualizarKpi() {
+        function atualizarJogador() {
             fetch("/jogadores/mais-votado", {
                 method: 'GET',
             })
@@ -110,42 +98,5 @@
                 });
         }
 
-
-
-        function listarJogadores() {
-            fetch("/jogadores/listar", { method: "GET" })
-             .then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (json) {
-                
-                var tbody = document.getElementById("listaDeJogadores");
-                tbody.innerHTML = ""; 
-
-                            for (let i = 0; i < json.length; i++) {
-                                var jogador = json[i];
-
-                          
-                                var tr = document.createElement("tr");
-
-                             
-                                tr.innerHTML = `
-                            <td>${jogador.nomeJogador}</td>
-                            <td>${jogador.apelidoJogador}</td>
-                            <td>${jogador.posicao}</td>
-                            <td>${jogador.numCamisa}</td>
-                        `;
-
-                                tbody.appendChild(tr);
-                            }
-                        });
-                    } else {
-                        tbody.innerHTML = "<tr><td colspan='4'>Erro ao carregar dados.</td></tr>";
-                        console.error("Erro na API de listagem!");
-                    }
-                })
-                .catch(function (erro) {
-                    console.error("Erro de rede: " + erro);
-                });
-        }
 
     </script>

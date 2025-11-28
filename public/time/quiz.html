@@ -357,23 +357,23 @@
     function finalizarJogo() {
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
-        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+        const porcentagemFinalDeAcertos = (pontuacaoFinal / quantidadeDeQuestoes ) * 100
 
 
-        if (porcentagemFinalDeAcertos <= 0.3) {
+        if (porcentagemFinalDeAcertos <= 30) {
             textoParaMensagemFinal = "Parece que você não estudou..."
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 90) {
             textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
+        else if (porcentagemFinalDeAcertos >= 90) {
             textoParaMensagemFinal = "Uau, parabéns!"
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+        textoParaMensagemFinal += "<br> Você acertou " + porcentagemFinalDeAcertos + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
