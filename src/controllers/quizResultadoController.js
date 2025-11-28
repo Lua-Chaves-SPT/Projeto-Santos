@@ -3,7 +3,7 @@ var quizResultadoModel = require("../models/quizResultadoModel");
 function buscarResultados(req, res) {
     var idUsuario = req.params.idUsuario;
 
-    if (fkUsuario == undefined) {
+    if (idUsuario == undefined) {
         res.status(400).send("O ID do usuário não foi fornecido!");
         return;
     }

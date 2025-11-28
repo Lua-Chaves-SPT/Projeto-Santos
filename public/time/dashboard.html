@@ -111,7 +111,7 @@ function carregarHistoricoQuiz() {
         return;
     }
 
-    fetch(`quiz/resultados/${idUsuario}`, { method: "GET" })
+    fetch(`/quiz/resultados/${idUsuario}`, { method: "GET" })
         .then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -144,6 +144,11 @@ function carregarHistoricoQuiz() {
 }
 
 function renderizarGrafico(labels, dados) {
+
+    
+    if (meuGrafico) {
+        meuGrafico.destroy();
+    }
 
     const ctx = document.getElementById('canvasHistoricoQuiz').getContext('2d');
     
